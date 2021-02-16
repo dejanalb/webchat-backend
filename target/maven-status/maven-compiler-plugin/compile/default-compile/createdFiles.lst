@@ -1,0 +1,4 @@
+webchat\controller\ApiController.class
+webchat\App.class
+webchat\model\Message.class
+webchat\model\User.class
