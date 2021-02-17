@@ -1,4 +1,6 @@
-webchat\controller\ApiController.class
+webchat\repository\UserRepository.class
 webchat\App.class
-webchat\model\Message.class
 webchat\model\User.class
+webchat\controller\ApiController.class
+webchat\repository\UserRepository$UserRowMapper.class
+webchat\model\Message.class

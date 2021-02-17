@@ -8,7 +8,7 @@ private String Name;
 private String Email;
 private Date Birthday;
 private String Nation;
-private String StutusMessage;
+private String StatusMessage;
 
 public User() {}
 
@@ -19,7 +19,7 @@ public User(Long idUser, String name, String email, Date birthday, String nation
 	Email = email;
 	Birthday = birthday;
 	Nation = nation;
-	StutusMessage = statusMessage;
+	StatusMessage = statusMessage;
 	}
 
 public Long getIdUser() {
@@ -62,18 +62,13 @@ public void setNation(String nation) {
 	Nation = nation;
 }
 
-public String getStutusMessage() {
-	return StutusMessage;
+public String getStatusMessage() {
+	return StatusMessage;
 }
 
-public void setStutusMessage(String statusMessage) {
-	StutusMessage = statusMessage;
+public void setStatusMessage(String statusMessage) {
+	StatusMessage = statusMessage;
 }
-
-
-
-
-
 
 }
 

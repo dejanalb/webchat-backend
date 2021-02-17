@@ -19,28 +19,31 @@ public class UserRepository {
 
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			User user = new User();
-		    user.setIdUser(rs.getLong("idUser"));
-		    user.setName(rs.getString("Name"));
-		    user.setEmail(rs.getString("Email"));
-		    user.setBirthday(rs.getDate("Birthday"));
-		    user.setNation(rs.getString("Nation"));
-		    user.setStutusMessage(rs.getString("StutusMessage"));
+		    user.setIdUser(rs.getLong("idUser")); //rs.getTipo("nomeColonna" indistintamente maiuscolo o minuscolo , esattamente il nome della colonna del db) 
+		    user.setName(rs.getString("name"));
+		    user.setEmail(rs.getString("email"));
+		    user.setBirthday(rs.getDate("birthday"));
+		    user.setNation(rs.getString("nation"));
+		    user.setStatusMessage(rs.getString("statusMessage"));
 		    return user;
 			}
 		}
 
     public List < User > findAll() {
-        return jdbcTemplate.query("select * from user", new UserRowMapper());
+        return jdbcTemplate.query("select * from User", new UserRowMapper());
     }
 
 
 
     public int insert(User user) {
-        return jdbcTemplate.update("insert into user (idUser, Name, Email, Birthday, Nation, StutusMessage) " + "values(?, ?, ?, ?, ?, ?)",
+        return jdbcTemplate.update("insert into user (idUser, name, email, birthday, nation, statusMessage) " + "values(?, ?, ?, ?, ?, ?)", 
             new Object[] {
-                user.getIdUser(), user.getName(), user.getEmail(), user.getBirthday(), user.getNation(), user.getStutusMessage()
+                user.getIdUser(), user.getName(), user.getEmail(), user.getBirthday(), user.getNation(), user.getStatusMessage()
             });
     }
 
+		
+		
+	}
+
   
-}

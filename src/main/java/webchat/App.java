@@ -24,8 +24,8 @@ public class App implements CommandLineRunner {
 	         }
 
 	public void run(String... args) throws Exception {
-//		User user = new User(Long.valueOf(1),"Alberto","husjdhgs",Date.from(Instant.now()),"Italy","Tue ses unu ballaloi");
-//		userrepository.insert(user);
-//		
+		User user = new User(Long.valueOf(3),"Alberto","husjdhgs",Date.from(Instant.now()),"Italy","Tue ses unu ballaloi");
+		userrepository.insert(user);
+		
 	}
 }
