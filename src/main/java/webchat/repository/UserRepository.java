@@ -27,23 +27,17 @@ public class UserRepository {
 		    user.setStatusMessage(rs.getString("statusMessage"));
 		    return user;
 			}
-		}
+	}
 
     public List < User > findAll() {
         return jdbcTemplate.query("select * from User", new UserRowMapper());
     }
 
-
-
     public int insert(User user) {
         return jdbcTemplate.update("insert into user (idUser, name, email, birthday, nation, statusMessage) " + "values(?, ?, ?, ?, ?, ?)", 
-            new Object[] {
-                user.getIdUser(), user.getName(), user.getEmail(), user.getBirthday(), user.getNation(), user.getStatusMessage()
-            });
+            new Object[] {user.getIdUser(), user.getName(), user.getEmail(), user.getBirthday(), user.getNation(), user.getStatusMessage()});
     }
 
-		
-		
-	}
+}
 
   
