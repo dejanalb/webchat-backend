@@ -36,6 +36,15 @@ public class ApiController {
             return users.findAll(); 
     }
 		
+	@GetMapping("/allMessages")
+	public List<Message> getAllMessages() {
+			return messages.findAll();
+	}
+	
+	@PostMapping("/newUser")
+	public int insertUser(@RequestBody User usr) {
+		return users.insert(usr);
+	}
 	
 	@GetMapping("/messagesFromTo")
 	@ResponseBody
@@ -43,11 +52,6 @@ public class ApiController {
 		    return messages.findAllMessageFromTo(fromId , toId);
 	}
 		
-	@GetMapping("/allMessages")
-	public List<Message> getAllMessages() {
-			return messages.findAll();
-	}
-	
 	@PostMapping("/submitMessageFromTo")
 	public int insertMessage(@RequestBody Message msg ) {
 		return messages.insert(msg);

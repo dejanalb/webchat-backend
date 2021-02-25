@@ -31,9 +31,9 @@ public class App implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//User user = new User(Long.valueOf(20),"Alberto","husjdhgs",Date.from(Instant.now()),"Italy","Tue ses unu ballaloi");
 		//userrepository.insert(user);
-		//User user2 = new User("Alberto","husjdhgs",Date.from(Instant.now()),"Italy","utente inserito con autoincremento id");
+	    //User user2 = new User("Alberto","husjdhgs",Date.from(Instant.now()),"Italy","utente inserito con autoincremento id");
 		//userrepository.insert(user2);		
-		//Message msg= new Message(2,3,"primo messaggio salvato con autoincremento id",Date.from(Instant.now())); 
+		//Message msg= new Message(2,3,"messaggio salvato con autoincremento id",Date.from(Instant.now())); 
 		//messagerepository.insert(msg);
 		
 	}
