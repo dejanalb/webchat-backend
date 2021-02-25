@@ -42,7 +42,7 @@ public class ApiController {
 
 	@GetMapping("/users") //  
 	public ResponseEntity<Object> getUsers() {
-		return userService.userNow();  // chiamo il metodo del service che farà i controlli e mi restituirà quello che mi serve o un errore specifico
+		return userService.getUsers();  // chiamo il metodo del service che farà i controlli e mi restituirà quello che mi serve o un errore specifico
 	}
     
 	@PostMapping("/newUser") 
@@ -52,9 +52,17 @@ public class ApiController {
 	
 	@GetMapping("/messagesFromTo")
 	@ResponseBody
-	public List<Message> getAllMessagesFromTo(@RequestParam int fromId, @RequestParam int toId) {
-		return messageRepository.findAllMessageFromTo(fromId, toId);
+	public ResponseEntity<Object> getMessages(@RequestParam int fromId, @RequestParam int toId){
+		return messageService.getMessages(fromId,toId);
 	}
+	
+	
+	
+	//@GetMapping("/messagesFromTo")
+	//@ResponseBody
+	//public List<Message> getAllMessagesFromTo(@RequestParam int fromId, @RequestParam int toId) {
+	//	return messageRepository.findAllMessageFromTo(fromId, toId);
+	//}
 
 	@PostMapping("/submitMessageFromTo")
 	public int insertMessage(@RequestBody Message msg) {

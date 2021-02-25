@@ -30,33 +30,24 @@ public class MessageRepository {
 		    return message;
 		    } 
 		}
-	
-	//provo a chiedere tutti i messaggi inviati da un determinato utente
-	//public List <Message> find(int id) { 
-	//	
-	//	return jdbcTemplate.query("Select * from Message where idMitt = id  ", new MessageRowMapper() );
-	//}
-	
-	
+		
 	public int insert(Message msg) {
 			 return jdbcTemplate.update("insert into Message (idMessage, idMitt, idDest, dateTime, text) " + "values(?, ?, ?, ?, ?)", 
 			                            new Object[] { msg.getIdMessage(), msg.getIdMitt(), msg.getIdDest(), msg.getDateTime(), msg.getText() });	
 			 
 			}
 	
-	
-	
-    //metodo per query che mi restituisce tutti i messaggi tra 2 utenti 
+   //metodo per query che mi restituisce tutti i messaggi tra 2 utenti 
 	public List<Message> findAllMessageFromTo(int id1 , int id2) {
 		 return jdbcTemplate.query("Select * from Message where (idMitt= ? and idDest= ? ) or (idMitt= ? and idDest= ? ) order by dateTime ", new Object[]{id1,id2,id2,id1}  , new MessageRowMapper());
 		 
 		 }
 	
 	
-	public List< Message > findAll() {
-		 return jdbcTemplate.query("select * from Message" , new MessageRowMapper() );
-		 
-		 }
+			/*
+			 * public List< Message > findAll() { return
+			 * jdbcTemplate.query("select * from Message" , new MessageRowMapper() ); }
+			 */
 		
 }
 

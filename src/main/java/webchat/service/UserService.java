@@ -1,10 +1,5 @@
 package webchat.service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +14,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public ResponseEntity<Object> userNow() { // faccio dei controlli e nel caso chiamo il metodo della repository per effettuare la query
+	public ResponseEntity<Object> getUsers() { // faccio dei controlli e nel caso chiamo il metodo della repository per effettuare la query
                                               // se i controlli non vanno a buon fine , gestisco e restituisco gli errori al controller
 		if (true) {
 			return new ResponseEntity<Object>(userRepository.findAll(), HttpStatus.OK);
