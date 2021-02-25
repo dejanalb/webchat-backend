@@ -29,11 +29,11 @@ public class UserRepository {
 			}
 	}
 
-    public List <User> findAll() {
+    public List <User> findAll() { //eseguo la query e restituisco il risultato
         return jdbcTemplate.query("select * from User", new UserRowMapper() );
     }
 
-    public int insert(User user) {
+    public int insert(User user) { // eseguo la query e restituisco il risultato
         return jdbcTemplate.update("insert into user (idUser, name, email, birthday, nation, statusMessage) " + "values(?, ?, ?, ?, ?, ?)", 
             new Object[] {user.getIdUser(), user.getName(), user.getEmail(), user.getBirthday(), user.getNation(), user.getStatusMessage()});
     }

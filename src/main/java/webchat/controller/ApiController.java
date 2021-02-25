@@ -40,9 +40,9 @@ public class ApiController {
 	@Autowired
 	MessageService messageService;
 
-	@GetMapping("/users")
+	@GetMapping("/users") //  
 	public ResponseEntity<Object> getUsers() {
-		return userService.userNow();
+		return userService.userNow();  // chiamo il metodo del service che farà i controlli e mi restituirà quello che mi serve o un errore specifico
 	}
     
 	@PostMapping("/newUser") 
@@ -50,11 +50,6 @@ public class ApiController {
 		return userService.insertUser(usr);
 	}
 	
-	/*
-	 * @PostMapping("/newUser") public int insertUser(@RequestBody User usr) {
-	 * return userRepository.insert(usr); }
-	 */
-
 	@GetMapping("/messagesFromTo")
 	@ResponseBody
 	public List<Message> getAllMessagesFromTo(@RequestParam int fromId, @RequestParam int toId) {

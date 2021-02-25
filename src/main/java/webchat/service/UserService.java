@@ -19,8 +19,8 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public ResponseEntity<Object> userNow() {
-
+	public ResponseEntity<Object> userNow() { // faccio dei controlli e nel caso chiamo il metodo della repository per effettuare la query
+                                              // se i controlli non vanno a buon fine , gestisco e restituisco gli errori al controller
 		if (true) {
 			return new ResponseEntity<Object>(userRepository.findAll(), HttpStatus.OK);
 		} else {
