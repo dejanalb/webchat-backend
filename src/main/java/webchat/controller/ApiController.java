@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,70 +20,55 @@ import webchat.model.User;
 import webchat.model.Message;
 import webchat.repository.MessageRepository;
 import webchat.repository.UserRepository;
-	
+import webchat.service.MessageService;
+import webchat.service.UserService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")
 public class ApiController {
-		
-    @Autowired 
-	UserRepository users;
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	MessageRepository messageRepository;
+
+	@Autowired
+	UserService userService;
+
+	@Autowired
+	MessageService messageService;
+
+	@GetMapping("/users")
+	public ResponseEntity<Object> getUsers() {
+		return userService.userNow();
+	}
     
-    @Autowired
-	MessageRepository messages;
-    	
-	@GetMapping("/users") 
-	public List<User> getAllUsers() {
-            return users.findAll(); 
-    }
-		
-	@GetMapping("/allMessages")
-	public List<Message> getAllMessages() {
-			return messages.findAll();
+	@PostMapping("/newUser") 
+	public ResponseEntity<Object> insertUser(@RequestBody User usr){
+		return userService.insertUser(usr);
 	}
 	
-	@PostMapping("/newUser")
-	public int insertUser(@RequestBody User usr) {
-		return users.insert(usr);
-	}
-	
+	/*
+	 * @PostMapping("/newUser") public int insertUser(@RequestBody User usr) {
+	 * return userRepository.insert(usr); }
+	 */
+
 	@GetMapping("/messagesFromTo")
 	@ResponseBody
-	public List<Message> getAllMessagesFromTo(@RequestParam int fromId ,@RequestParam int toId) {
-		    return messages.findAllMessageFromTo(fromId , toId);
+	public List<Message> getAllMessagesFromTo(@RequestParam int fromId, @RequestParam int toId) {
+		return messageRepository.findAllMessageFromTo(fromId, toId);
 	}
-		
+
 	@PostMapping("/submitMessageFromTo")
-	public int insertMessage(@RequestBody Message msg ) {
-		return messages.insert(msg);
-		
+	public int insertMessage(@RequestBody Message msg) {
+		return messageRepository.insert(msg);
+
 	}
-	
-	
-		
+    // allMessages mi restituisce tutti i messaggi presenti nel DB, INUTILE
+	// @GetMapping("/allMessages")
+	// public List<Message> getAllMessages() {
+	// return messageRepository.findAll();
+	// }
 }
-		
-		/*
-		 * @GetMapping("/users") public List<User> getAllUsers() { User user1 = new
-		 * User("Alberto","afadf@gmail.com"); User user2 = new User();
-		 * user2.setName("Roberto"); user2.setEmail("adga@gmail.com");
-		 * 
-		 * List<User> list = new ArrayList<User>(); list.add(user1); list.add(user2);
-		 * return list; }
-		 * 
-		 * @GetMapping("/users/{id}") public User getUserById(@PathVariable String id )
-		 * { User user1 = new User(); user1.setName("Roberto");
-		 * user1.setEmail("Gianni"); return user1; }
-		 * 
-		 * @GetMapping("/users/par") public User getUserByIdPar(@RequestParam String
-		 * fromid, @RequestParam String toid ) { User user1 = new User();
-		 * user1.setName("Roberto"); user1.setEmail("Gianni"); return user1; }
-		 * 
-		 * @PostMapping("/users/par") public User getUserByIdPar(@RequestBody User user)
-		 * { User user1 = new User(); user1.setName("Roberto");
-		 * user1.setEmail("Gianni"); return user1; }
-		 */
-		
-	
-	

@@ -29,8 +29,8 @@ public class UserRepository {
 			}
 	}
 
-    public List < User > findAll() {
-        return jdbcTemplate.query("select * from User", new UserRowMapper());
+    public List <User> findAll() {
+        return jdbcTemplate.query("select * from User", new UserRowMapper() );
     }
 
     public int insert(User user) {
